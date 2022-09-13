@@ -1,18 +1,16 @@
 package Semi_Project;
 
 import java.util.ArrayList;
-
 public class Student {
-	private int studentId;
-	private String studentName;
-	private String major;
-	private ArrayList scoreList;
+	private int studentId;    		//학번
+	private String studentName;		//이름
+	private Subject majorSubject;
+	private ArrayList<Score> scoreList;
 	
-	public Student(int studentId, String studentName, String major, ArrayList scoreList) {
+	public Student(int studentId, String studentName, Subject majorSubject, ArrayList scoreList) {
 		this.studentId = studentId;
 		this.studentName = studentName;
-		this.major = major;
-		this.scoreList = scoreList;
+		this.majorSubject = majorSubject;
 	}
 
 	public int getStudentId() {
@@ -31,12 +29,12 @@ public class Student {
 		this.studentName = studentName;
 	}
 
-	public String getMajor() {
-		return major;
+	public Subject getMajor() {
+		return majorSubject;
 	}
 
-	public void setMajor(String major) {
-		this.major = major;
+	public void setMajorSubject(Subject majorSubject) {
+		this.majorSubject = majorSubject;
 	}
 
 	public ArrayList getScoreList() {
@@ -47,6 +45,13 @@ public class Student {
 		this.scoreList = scoreList;
 	}
 	
-	
+	private Score Score(int studentId, Subject subject, int point) {
+		return Score(studentId, subject, point);
+	}
+
+	public ArrayList<Score> addScoreList(Score score) {
+		scoreList.add(score);
+		return scoreList;
+	}
 	
 }
