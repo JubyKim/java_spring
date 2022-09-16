@@ -1,13 +1,12 @@
 package com.example.client.controller;
 
+import com.example.client.dto.UserResponse;
 import com.example.client.service.RestTemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/client")
+@RequestMapping("/api/client")
 public class APIController {
 
 
@@ -17,8 +16,10 @@ public class APIController {
         this.restTemplateService = restTemplateService;
     }
 
-    @GetMapping("")
-    public String getHello() {
-        return restTemplateService.hello();
+    @PostMapping("/hello")
+    public UserResponse getHello() {
+        return restTemplateService.exchange();
     }
+
+
 }
