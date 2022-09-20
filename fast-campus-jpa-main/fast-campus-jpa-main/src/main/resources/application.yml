@@ -10,6 +10,13 @@ spring:
     generate-ddl: false
     hibernate:
       ddl-auto: create-drop
-#logging:
-#  level:
-#    root: trace
+  datasource:
+    url: jdbc:mysql://localhost:3306/book_manager
+    username: root
+    password:
+    initialization-mode: always
+server:
+  port: 8070
+logging:
+  level:
+    root: trace

@@ -11,18 +11,19 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Data
+@ToString(callSuper = true)
+//@EqualsAndHashCode(callSuper = true)
 @Builder
 @Entity
-public class User {
-
+//@EntityListeners(value = { UserEntityListener.class })
+public class UserInfo {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @NonNull
     private String name;
 
     @NonNull
     private String email;
-
 }
