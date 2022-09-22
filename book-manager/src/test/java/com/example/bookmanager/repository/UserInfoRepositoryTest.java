@@ -1,5 +1,6 @@
 package com.example.bookmanager.repository;
 
+import com.example.bookmanager.domain.Gender;
 import com.example.bookmanager.domain.UserInfo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,10 @@ class UserInfoRepositoryTest {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UserHistoryRepository userHistoryRepository;
+
 
     @Test
     void crud() {
@@ -83,6 +88,38 @@ class UserInfoRepositoryTest {
 
         Example<UserInfo> example = Example.of(new UserInfo("ma","fastcampus.com"), matcher);
         userRepository.findAll(example).forEach(System.out::println);
+
+    }
+
+    @Test
+    void enumTest() {
+        UserInfo user = userRepository.findById(1l).orElseThrow(RuntimeException::new);
+        user.setGender(Gender.MALE);
+        userRepository.save(user);
+
+        userRepository.findAll().forEach(System.out::println);
+    }
+
+    @Test
+    void userHistoryTest() {
+        System.out.println("what is user repo first: ");
+        userRepository.findAll().forEach(System.out::println);
+
+        UserInfo user = new UserInfo();
+        user.setEmail("martin-new@fastcampus.com");
+        user.setName("martin-new");
+
+        userRepository.save(user);
+
+        user.setName("martin-new-new");
+
+        userRepository.save(user);
+
+        System.out.println("what is user repo: ");
+        userRepository.findAll().forEach(System.out::println);
+
+        System.out.println("여기에 결과 나옴 짜잔");
+        userHistoryRepository.findAll().forEach(System.out::println);
 
     }
 }

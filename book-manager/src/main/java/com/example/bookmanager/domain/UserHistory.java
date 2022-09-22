@@ -1,7 +1,6 @@
 package com.example.bookmanager.domain;
 
-import com.example.bookmanager.domain.listener.Auditable;
-import com.example.bookmanager.domain.listener.UserEntityListener;
+import com.example.bookmanager.repository.UserHistoryRepository;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -10,19 +9,19 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
 @NoArgsConstructor
-@AllArgsConstructor
-@RequiredArgsConstructor
 @Data
 @ToString(callSuper = true)
-@EqualsAndHashCode(callSuper = true)
-@Builder
-@Entity
-//@EntityListeners(value = { AuditingEntityListener.class, UserEntityListener.class })
-public class UserInfo extends BaseEntity implements Auditable {
+//@EqualsAndHashCode(callSuper = true)
+//@EntityListeners(value = AuditingEntityListener.class)
+public class UserHistory{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
+
+    private Long userID;
 
     @NonNull
     private String name;
@@ -34,7 +33,7 @@ public class UserInfo extends BaseEntity implements Auditable {
 
     @CreatedDate
     private LocalDateTime createdAt;
+
     @LastModifiedDate
     private LocalDateTime updatedAt;
-
 }

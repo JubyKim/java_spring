@@ -11,7 +11,7 @@ class UserInfoTest {
 //        user.setCreatedAt(LocalDateTime.now());
 //        user.setUpdatedAt(LocalDateTime.now());
 
-        UserInfo userInfo1 = new UserInfo(null, "martin", "martin@fastcampus.com");
+//        UserInfo userInfo1 = new UserInfo(null, "martin", "martin@fastcampus.com");
 //        User user2 = new User("martin", "martin@fastcampus.com");
 
         UserInfo userInfo3 = UserInfo.builder()
