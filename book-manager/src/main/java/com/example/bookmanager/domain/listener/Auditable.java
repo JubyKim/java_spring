@@ -11,9 +11,4 @@ public interface Auditable {
     void setUpdatedAt(LocalDateTime updatedAt);
 
 
-
-
-
-
-
 }

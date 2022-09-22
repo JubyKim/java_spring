@@ -28,6 +28,7 @@ class BookReviewInfoRepositoryTest {
 
     @Test
     void crudTest2() {
+        givenBook();
         givenBookReviewInfo();
 
         Book result = bookReviewInfoRepository
@@ -35,14 +36,15 @@ class BookReviewInfoRepositoryTest {
                 .orElseThrow(RuntimeException::new)
                 .getBook();
 
+        System.out.println("this is book Repo : " + bookRepository.findAll());
         System.out.println(">>> " + result);
 
-//        BookReviewInfo result2 = bookRepository
-//                .findById(7L)
-//                .orElseThrow(RuntimeException::new)
-//                .getBookReviewInfo();
-//
-//        System.out.println(">>> " + result2);
+        BookReviewInfo result2 = bookRepository
+                .findById(1L)
+                .orElseThrow(RuntimeException::new)
+                .getBookReviewInfo();
+
+        System.out.println(">>> " + result2);
     }
 
     private Book givenBook() {
