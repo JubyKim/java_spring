@@ -1,3 +1,5 @@
+
+
 spring:
   h2:
     console:
@@ -10,6 +12,11 @@ spring:
     generate-ddl: false
     hibernate:
       ddl-auto: create-drop
+  datasource:
+    url: jdbc:mysql://localhost:3306/book_manager
+    username: root
+    password: kyobo11@
+    initialization-mode: always
 #logging:
 #  level:
 #    root: trace

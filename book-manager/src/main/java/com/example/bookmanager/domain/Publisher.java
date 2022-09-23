@@ -34,7 +34,7 @@ public class Publisher extends BaseEntity {
     @ToString.Exclude
     private List<Book> books = new ArrayList<>();
 
-    public void addBook(Book book) {
-        this.books.add(book);
-    }
+//    public void addBook(Book book) {
+//        this.books.add(book);
+//    }
 }

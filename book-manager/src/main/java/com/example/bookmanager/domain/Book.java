@@ -1,6 +1,7 @@
 package com.example.bookmanager.domain;
 
 import com.example.bookmanager.domain.listener.Auditable;
+import com.example.bookmanager.domain.listener.BookAndAuthor;
 import lombok.*;
 import org.hibernate.annotations.Where;
 import org.springframework.data.annotation.CreatedDate;
@@ -10,6 +11,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
@@ -19,6 +21,7 @@ import java.util.List;
 //@EqualsAndHashCode(callSuper = true)
 //@DynamicUpdate
 //@Where(clause = "deleted = false")
+
 public class Book extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,18 +49,20 @@ public class Book extends BaseEntity {
     private Publisher publisher;
 //
     @ManyToMany
+    @ToString.Exclude
     private List<Author> authors = new ArrayList<>();
-//    @OneToMany
-//    @JoinColumn(name = "book_id")
-//    @ToString.Exclude
-//    private List<BookAndAuthor> bookAndAuthors = new ArrayList<>();
+
+    @OneToMany
+    @JoinColumn(name = "book_id")
+    @ToString.Exclude
+    private List<BookAndAuthor> bookAndAuthors = new ArrayList<>();
 //
 //    private boolean deleted;
 //
 //    //    @Convert(converter = BookStatusConverter.class)
 //    private BookStatus status; // 판매상태
 //
-//    public void addBookAndAuthors(BookAndAuthor... bookAndAuthors) {
-//        Collections.addAll(this.bookAndAuthors, bookAndAuthors);
-//    }
+    public void addBookAndAuthors(BookAndAuthor... bookAndAuthors) {
+        Collections.addAll(this.bookAndAuthors, bookAndAuthors);
+    }
 }

@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import javax.persistence.*;
 
+import com.example.bookmanager.domain.listener.BookAndAuthor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -25,14 +26,15 @@ public class Author extends BaseEntity {
     private String country;
 
     @ManyToMany
+    @ToString.Exclude
     private List<Book> books = new ArrayList<>();
     //
-//    @OneToMany
-//    @JoinColumn(name = "author_id")
-//    @ToString.Exclude
-//    private List<BookAndAuthor> bookAndAuthors = new ArrayList<>();
-//
-//    public void addBookAndAuthors(BookAndAuthor... bookAndAuthors) {
-//        Collections.addAll(this.bookAndAuthors, bookAndAuthors);
-//    }
+    @OneToMany
+    @JoinColumn(name = "author_id")
+    @ToString.Exclude
+    private List<BookAndAuthor> bookAndAuthors = new ArrayList<>();
+
+    public void addBookAndAuthors(BookAndAuthor... bookAndAuthors) {
+        Collections.addAll(this.bookAndAuthors, bookAndAuthors);
+    }
 }
