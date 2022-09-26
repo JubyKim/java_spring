@@ -1,5 +1,3 @@
-
-
 spring:
   h2:
     console:
@@ -11,7 +9,7 @@ spring:
         format_sql: true
     generate-ddl: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create #-drop
   datasource:
     url: jdbc:mysql://localhost:3306/book_manager
     username: root

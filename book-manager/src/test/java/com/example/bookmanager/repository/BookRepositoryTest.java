@@ -19,6 +19,9 @@ public class BookRepositoryTest {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private CommentRepository commentRepository;
+
     @Test
     void bookTest() {
         Book book = new Book();
