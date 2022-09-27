@@ -7,6 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.transaction.Transactional;
 
+import static java.time.LocalDateTime.now;
+
 @SpringBootTest
 
 public class BookRepositoryTest {
@@ -74,10 +76,64 @@ public class BookRepositoryTest {
         return bookRepository.save(book);
     }
 
+    @Test
+    void bookCascadeTest() {
+        Book book = new Book();
+        book.setTitle("JPA 초격차 패키지");
+
+        Publisher publisher = new Publisher();
+        publisher.setName("패스트캠퍼스");
+//        publisher.setCreateAt(now());
+        publisherRepository.save(publisher);
+        book.setPublisher(publisher);
+//        bookRepository.save(book);
+
+        System.out.println("books : " + bookRepository.findAll());
+        System.out.println("publishers : " + publisherRepository.findAll());
+
+        Book book1 = bookRepository.findById(1L).get();
+        book1.getPublisher().setName("슬로우캠퍼스");
+
+        bookRepository.save(book1);
+
+        System.out.println("publishers : " + publisherRepository.findAll());
+
+        Book book2 = bookRepository.findById(1L).get();
+//        bookRepository.delete(book2);
+//        bookRepository.deleteById(1L);
+
+//        publisherRepository.delete(book2.getPublisher());
+
+        Book book3 = bookRepository.findById(1L).get();
+        book3.setPublisher(null);
+
+        bookRepository.save(book3);
+
+        System.out.println("books : " + bookRepository.findAll());
+        System.out.println("publishers : " + publisherRepository.findAll());
+        System.out.println("book3-publisher : " + bookRepository.findById(1L).get().getPublisher());
+    }
+
     private Publisher givenPublisher() {
         Publisher publisher = new Publisher();
         publisher.setName("패스트캠퍼스");
 
         return publisherRepository.save(publisher);
+    }
+
+    @Test
+    @Transactional
+    void converterTest() {
+        bookRepository.findAll().forEach(System.out::println);
+
+        Book book = new Book();
+        book.setTitle("또다른 IT전문서적");
+        book.setStatus(new BookStatus(200));
+
+        bookRepository.save(book);
+
+        System.out.println(bookRepository.findRawRecord().values());
+
+        bookRepository.findAll().forEach(System.out::println);
     }
 }

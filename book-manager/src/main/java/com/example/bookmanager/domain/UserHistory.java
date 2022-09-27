@@ -1,52 +1,59 @@
 package com.example.bookmanager.domain;
 
-import com.example.bookmanager.domain.listener.MyEntityListener;
-import com.example.bookmanager.domain.listener.UserEntityListener;
-import com.example.bookmanager.repository.UserHistoryRepository;
-import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-import javax.persistence.*;
-import java.time.LocalDateTime;
-
+/**
+ * @author Martin
+ * @since 2021/03/31
+ */
+@Entity
 @NoArgsConstructor
-@AllArgsConstructor
-@RequiredArgsConstructor
 @Data
-@EnableJpaAuditing
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@Builder
-@Entity
-@EntityListeners(value = { MyEntityListener.class})
-public class UserHistory  extends BaseEntity{
+public class UserHistory extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private Long id;
 
-    private Long userID;
-
-    @NonNull
     private String name;
 
-    @NonNull
     private String email;
 
+    @Enumerated(value = EnumType.STRING)
     private Gender gender;
 
-    @CreatedDate
-//    @CreationTimestamp
-    private LocalDateTime createdAt;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "city", column = @Column(name = "home_city")),
+            @AttributeOverride(name = "district", column = @Column(name = "home_district")),
+            @AttributeOverride(name = "detail", column = @Column(name = "home_address_detail")),
+            @AttributeOverride(name = "zipCode", column = @Column(name = "home_zip_code"))
+    })
+    private Address homeAddress;
 
-    @LastModifiedDate
-//    @UpdateTimestamp
-    private LocalDateTime updatedAt;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "city", column = @Column(name = "company_city")),
+            @AttributeOverride(name = "district", column = @Column(name = "company_district")),
+            @AttributeOverride(name = "detail", column = @Column(name = "company_address_detail")),
+            @AttributeOverride(name = "zipCode", column = @Column(name = "company_zip_code"))
+    })
+    private Address companyAddress;
 
     @ManyToOne
     @ToString.Exclude

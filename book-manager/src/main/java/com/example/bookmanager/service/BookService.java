@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -22,7 +23,7 @@ public class BookService {
     private final EntityManager entityManager;
     private final AuthorService authorService;
 
-//    @Transactional(propagation = Propagation.REQUIRED)
+    //    @Transactional(propagation = Propagation.REQUIRED)
     public void putBookAndAuthor() {
         Book book = new Book();
         book.setTitle("JPA 시작하기");
@@ -44,7 +45,7 @@ public class BookService {
 //        throw new RuntimeException("오류가 나서 DB commit이 발생하지 않습니다");
     }
 
-//    @Transactional(isolation = Isolation.SERIALIZABLE)
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public void get(Long id) {
         System.out.println(">>> " + bookRepository.findById(id));
         System.out.println(">>> " + bookRepository.findAll());
@@ -54,7 +55,7 @@ public class BookService {
         System.out.println(">>> " + bookRepository.findById(id));
         System.out.println(">>> " + bookRepository.findAll());
 
-//        bookRepository.update();
+        bookRepository.update();
 
         entityManager.clear();
 

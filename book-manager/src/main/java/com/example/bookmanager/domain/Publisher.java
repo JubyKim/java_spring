@@ -1,17 +1,15 @@
 package com.example.bookmanager.domain;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.data.annotation.CreatedDate;
 
 @Entity
 @NoArgsConstructor
@@ -25,6 +23,9 @@ public class Publisher extends BaseEntity {
 
     private String name;
 
+//    @CreatedDate
+//    @Column(columnDefinition = "datetime(6) default now(6)")
+//    private LocalDateTime createAt;
     /**
      For orphan removal: If you invoke setOrders(null), the related Order entities will be removed in db automatically.
      For remove cascade: If you invoke setOrders(null), the related Order entities will NOT be removed in db automatically.
@@ -34,7 +35,7 @@ public class Publisher extends BaseEntity {
     @ToString.Exclude
     private List<Book> books = new ArrayList<>();
 
-//    public void addBook(Book book) {
-//        this.books.add(book);
-//    }
+    public void addBook(Book book) {
+        this.books.add(book);
+    }
 }

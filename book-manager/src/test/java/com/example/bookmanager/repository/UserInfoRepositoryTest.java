@@ -1,5 +1,6 @@
 package com.example.bookmanager.repository;
 
+import com.example.bookmanager.domain.Address;
 import com.example.bookmanager.domain.Gender;
 import com.example.bookmanager.domain.UserHistory;
 import com.example.bookmanager.domain.UserInfo;
@@ -197,4 +198,43 @@ class UserInfoRepositoryTest {
 
         System.out.println("UserHistory.getUser() : " + userHistoryRepository.findAll().get(0).getUser());
     }
+    @Test
+    void embedTest() {
+        userRepository.findAll().forEach(System.out::println);
+//
+        UserInfo user = new UserInfo();
+        user.setName("steve");
+        user.setHomeAddress(new Address("서울시", "강남구", "강남대로 364 미왕빌딩", "06241"));
+        user.setCompanyAddress(new Address("서울시", "성동구", "성수이로 113 제강빌딩", "04794"));
+
+        userRepository.save(user);
+//
+//        UserInfo user1 = new UserInfo();
+//        user1.setName("joshua");
+//        user1.setHomeAddress(null);
+//        user1.setCompanyAddress(null);
+//
+//        userRepository.save(user1);
+//
+//        UserInfo user2 = new UserInfo();
+//        user2.setName("jordan");
+//        user2.setHomeAddress(new Address());
+//        user2.setCompanyAddress(new Address());
+//
+//        userRepository.save(user2);
+//
+////        entityManager.clear();
+//
+//        userRepository.findAll().forEach(System.out::println);
+        userHistoryRepository.findAll().forEach(System.out::println);
+
+        userRepository.findAllRawRecord().forEach(a -> System.out.println(a.values()));
+
+//        assertAll(
+//                () -> assertThat(userRepository.findById(7L).get().getHomeAddress()).isNull(),
+//                () -> assertThat(userRepository.findById(8L).get().getHomeAddress()).isInstanceOf(Address.class)
+//        );
+    }
+
+
 }
