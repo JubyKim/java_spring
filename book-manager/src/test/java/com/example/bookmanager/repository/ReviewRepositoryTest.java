@@ -1,6 +1,6 @@
-package com.fastcampus.jpa.bookmanager.repository;
+package com.example.bookmanager.repository;
 
-import com.fastcampus.jpa.bookmanager.domain.Review;
+import com.example.bookmanager.domain.Review;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +20,8 @@ public class ReviewRepositoryTest {
     @Transactional
     void reviewTest() {
         List<Review> reviews = reviewRepository.findAll();
-        List<Review> reviews = reviewRepository.findAllByFetchJoin();
-        List<Review> reviews = reviewRepository.findAllByEntityGraph();
+//        List<Review> reviews = reviewRepository.findAllByFetchJoin();
+//        List<Review> reviews = reviewRepository.findAllByEntityGraph();
 
         System.out.println(reviews);
 
