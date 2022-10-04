@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/sp-fastcampus-spring-sec/server/login-basic" />
             <option value="$PROJECT_DIR$/sp-fastcampus-spring-sec/server/login-custom-filter" />
             <option value="$PROJECT_DIR$/sp-fastcampus-spring-sec/server/login-multi-chain" />
+            <option value="$PROJECT_DIR$/sp-fastcampus-spring-sec/web/student-teacher" />
           </set>
         </option>
       </GradleProjectSettings>
@@ -32,6 +33,7 @@
             <option value="$PROJECT_DIR$/sp-fastcampus-spring-sec/server/login-basic" />
             <option value="$PROJECT_DIR$/sp-fastcampus-spring-sec/server/login-custom-filter" />
             <option value="$PROJECT_DIR$/sp-fastcampus-spring-sec/server/login-multi-chain" />
+            <option value="$PROJECT_DIR$/sp-fastcampus-spring-sec/web/student-teacher" />
           </set>
         </option>
       </GradleProjectSettings>
