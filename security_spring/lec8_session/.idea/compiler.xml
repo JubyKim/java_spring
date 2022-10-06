@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="sp-fastcampus-spring-sec.comp-user-admin" target="11" />
+      <module name="sp-fastcampus-spring-sec.comp-user-admin.main" target="11" />
+      <module name="sp-fastcampus-spring-sec.comp-user-admin.test" target="11" />
+      <module name="sp-fastcampus-spring-sec.server-basic-authentication-test" target="11" />
+      <module name="sp-fastcampus-spring-sec.server-basic-authentication-test.main" target="11" />
+      <module name="sp-fastcampus-spring-sec.server-basic-authentication-test.test" target="11" />
+      <module name="sp-fastcampus-spring-sec.server-basic-test" target="11" />
+      <module name="sp-fastcampus-spring-sec.server-basic-test.main" target="11" />
+      <module name="sp-fastcampus-spring-sec.server-basic-test.test" target="11" />
+      <module name="sp-fastcampus-spring-sec.server-login-basic" target="11" />
+      <module name="sp-fastcampus-spring-sec.server-login-basic.main" target="11" />
+      <module name="sp-fastcampus-spring-sec.server-login-basic.test" target="11" />
+      <module name="sp-fastcampus-spring-sec.server-login-custom-filter" target="11" />
+      <module name="sp-fastcampus-spring-sec.server-login-custom-filter.main" target="11" />
+      <module name="sp-fastcampus-spring-sec.server-login-custom-filter.test" target="11" />
+      <module name="sp-fastcampus-spring-sec.server-login-multi-chain" target="11" />
+      <module name="sp-fastcampus-spring-sec.server-login-multi-chain.main" target="11" />
+      <module name="sp-fastcampus-spring-sec.server-login-multi-chain.test" target="11" />
+      <module name="sp-fastcampus-spring-sec.server-login-rememberme" target="11" />
+      <module name="sp-fastcampus-spring-sec.server-login-rememberme.main" target="11" />
+      <module name="sp-fastcampus-spring-sec.server-login-rememberme.test" target="11" />
+      <module name="sp-fastcampus-spring-sec.server-login-session-management" target="11" />
+      <module name="sp-fastcampus-spring-sec.server-login-session-management.main" target="11" />
+      <module name="sp-fastcampus-spring-sec.server-login-session-management.test" target="11" />
+      <module name="sp-fastcampus-spring-sec.server-login-userdetails" target="11" />
+      <module name="sp-fastcampus-spring-sec.server-login-userdetails.main" target="11" />
+      <module name="sp-fastcampus-spring-sec.server-login-userdetails.test" target="11" />
+      <module name="sp-fastcampus-spring-sec.web-student-teacher" target="11" />
+      <module name="sp-fastcampus-spring-sec.web-student-teacher.main" target="11" />
+      <module name="sp-fastcampus-spring-sec.web-student-teacher.test" target="11" />
+      <module name="sp-fastcampus-spring-sec.web-user-admin" target="11" />
+      <module name="sp-fastcampus-spring-sec.web-user-admin.main" target="11" />
+      <module name="sp-fastcampus-spring-sec.web-user-admin.test" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
